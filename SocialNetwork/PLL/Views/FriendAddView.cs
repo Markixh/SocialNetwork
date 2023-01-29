@@ -27,7 +27,7 @@ namespace SocialNetwork.PLL.Views
                         
             try
             {
-                friendService.AddFrend(friendAddData);
+                friendService.AddFriend(friendAddData);
                 SuccessMessage.Show("Пользователь успешно добавлен в друзья.");
             }
 
