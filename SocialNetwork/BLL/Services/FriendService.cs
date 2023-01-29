@@ -21,10 +21,7 @@ namespace SocialNetwork.BLL.Services
         {
             if (!new EmailAddressAttribute().IsValid(friendAddData.friend_email))
                 throw new ArgumentNullException();
-
-            if (userRepository.FindByEmail(friendAddData.friend_email) != null)
-                throw new ArgumentNullException();
-
+                        
             var findFrendEntity = this.userRepository.FindByEmail(friendAddData.friend_email);
             if (friendAddData is null) throw new UserNotFoundException();
 

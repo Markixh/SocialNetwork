@@ -19,7 +19,7 @@ namespace SocialNetwork.PLL.Views
         {
             var messageSendingData = new MessageSendingData();
 
-            Console.Write("Введите почтовый адрес получателя: ");
+            Console.Write("\nВведите почтовый адрес получателя: ");
             messageSendingData.RecipientEmail = Console.ReadLine();
 
             Console.WriteLine("Введите сообщение (не больше 5000 символов): ");

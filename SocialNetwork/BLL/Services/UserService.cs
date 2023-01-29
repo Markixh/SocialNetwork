@@ -36,7 +36,7 @@ namespace SocialNetwork.BLL.Services
             if (!new EmailAddressAttribute().IsValid(userRegistrationData.Email))
                 throw new ArgumentNullException();
 
-            if (FindByEmail(userRegistrationData.Email) != null)
+            if (userRepository.FindByEmail(userRegistrationData.Email) != null)
                 throw new ArgumentNullException();
 
             var userEntity = new UserEntity()

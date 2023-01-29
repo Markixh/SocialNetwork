@@ -6,7 +6,7 @@ namespace SocialNetwork.PLL.Views
     {
         public void Show(User user)
         {
-            Console.WriteLine("Информация о моем профиле");
+            Console.WriteLine("\nИнформация о моем профиле");
             Console.WriteLine("Мой идентификатор: {0}", user.Id);
             Console.WriteLine("Меня зовут: {0}", user.FirstName);
             Console.WriteLine("Моя фамилия: {0}", user.LastName);

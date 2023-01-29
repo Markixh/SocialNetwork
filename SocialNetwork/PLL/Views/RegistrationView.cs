@@ -16,7 +16,7 @@ namespace SocialNetwork.PLL.Views
         {
             var userRegistrationData = new UserRegistrationData();
 
-            Console.WriteLine("Для создания нового профиля введите ваше имя:");
+            Console.Write("\nДля создания нового профиля введите ваше имя:");
             userRegistrationData.FirstName = Console.ReadLine();
 
             Console.Write("Ваша фамилия:");

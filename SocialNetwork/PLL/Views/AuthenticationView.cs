@@ -20,10 +20,10 @@ namespace SocialNetwork.PLL.Views
         {
             var authenticationData = new UserAuthenticationData();
 
-            Console.WriteLine("Введите почтовый адрес:");
+            Console.Write("\nВведите почтовый адрес:");
             authenticationData.Email = Console.ReadLine();
 
-            Console.WriteLine("Введите пароль:");
+            Console.Write("Введите пароль:");
             authenticationData.Password = Console.ReadLine();
 
             try
