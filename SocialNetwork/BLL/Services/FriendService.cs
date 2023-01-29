@@ -30,14 +30,17 @@ namespace SocialNetwork.BLL.Services
                 throw new ArgumentNullException();
                         
             var findFrendEntity = this.userRepository.FindByEmail(friendAddData.friend_email);
-            if (friendAddData is null) throw new UserNotFoundException();
+            if (findFrendEntity is null) 
+                throw new UserNotFoundException();
 
             var friendEntity = new FriendEntity()
             {
                 user_id = friendAddData.user_id,
                 friend_id = findFrendEntity.id
-
             };
+
+            if (friendEntity.user_id == friendEntity.friend_id)
+                throw new UserNotFoundException();
 
             if (this.friendRepository.Create(friendEntity) == 0)
                 throw new Exception();
