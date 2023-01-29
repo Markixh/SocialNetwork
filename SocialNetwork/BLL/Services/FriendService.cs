@@ -26,6 +26,9 @@ namespace SocialNetwork.BLL.Services
         /// <param name="friendAddData">Введенные данные пользователя, для добавления</param>
         public void AddFriend(FriendData friendAddData)
         {
+            if (String.IsNullOrEmpty(friendAddData.friend_email))
+                throw new ArgumentNullException();
+
             if (!new EmailAddressAttribute().IsValid(friendAddData.friend_email)) 
                 throw new ArgumentNullException();
                         
