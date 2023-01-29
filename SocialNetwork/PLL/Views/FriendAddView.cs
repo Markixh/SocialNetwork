@@ -1,4 +1,5 @@
-﻿using SocialNetwork.BLL.Models;
+﻿using SocialNetwork.BLL.Exceptions;
+using SocialNetwork.BLL.Models;
 using SocialNetwork.BLL.Services;
 using SocialNetwork.PLL.Helpers;
 
@@ -16,16 +17,26 @@ namespace SocialNetwork.PLL.Views
             friendAddData.friend_email = Console.ReadLine();
 
             friendAddData.user_id = user.Id;
-
-            // Доработать
+                        
             try
             {
                 friendService.AddFrend(friendAddData);
-                SuccessMessage.Show("Друг добавлен");
+                SuccessMessage.Show("Пользователь успешно добавлен в друзья.");
             }
-            catch
+
+            catch (UserNotFoundException)
             {
-                AlertMessage.Show("Произошла ошибка");
+                AlertMessage.Show("Пользователь не найден!");
+            }
+
+            catch (ArgumentNullException)
+            {
+                AlertMessage.Show("Введите корректное значение!");
+            }
+
+            catch (Exception)
+            {
+                AlertMessage.Show("Произошла ошибка при добавлении друга!");
             }
         }
     }

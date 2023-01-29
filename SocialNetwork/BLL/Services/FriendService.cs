@@ -1,4 +1,5 @@
-﻿using SocialNetwork.BLL.Models;
+﻿using SocialNetwork.BLL.Exceptions;
+using SocialNetwork.BLL.Models;
 using SocialNetwork.DAL.Entities;
 using SocialNetwork.DAL.Repositories;
 using System.ComponentModel.DataAnnotations;
@@ -7,12 +8,12 @@ namespace SocialNetwork.BLL.Services
 {
     public class FriendService
     {
-        UserService userService;
+        IUserRepository userRepository;
         IFriendRepository friendRepository;
 
         public FriendService()
         {
-            userService = new UserService();
+            userRepository = new UserRepository();
             friendRepository = new FriendRepository();
         }
 
@@ -21,13 +22,17 @@ namespace SocialNetwork.BLL.Services
             if (!new EmailAddressAttribute().IsValid(friendAddData.friend_email))
                 throw new ArgumentNullException();
 
-            if (userService.FindByEmail(friendAddData.friend_email) != null)
+            if (userRepository.FindByEmail(friendAddData.friend_email) != null)
                 throw new ArgumentNullException();
+
+            var findFrendEntity = this.userRepository.FindByEmail(friendAddData.friend_email);
+            if (friendAddData is null) throw new UserNotFoundException();
 
             var friendEntity = new FriendEntity()
             {
                 user_id = friendAddData.user_id,
-                friend_id = userService.FindByEmail(friendAddData.friend_email).Id //доработать
+                friend_id = findFrendEntity.id
+
             };
 
             if (this.friendRepository.Create(friendEntity) == 0)
