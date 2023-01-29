@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SocialNetwork.BLL.Services
 {
+    /// <summary>
+    /// Сервис по работе с друзьями
+    /// </summary>
     public class FriendService
     {
         IUserRepository userRepository;
@@ -17,9 +20,13 @@ namespace SocialNetwork.BLL.Services
             friendRepository = new FriendRepository();
         }
 
+        /// <summary>
+        /// Добавление пользователя в друзья
+        /// </summary>
+        /// <param name="friendAddData">Введенные данные пользователя, для добавления</param>
         public void AddFrend(FriendData friendAddData)
         {
-            if (!new EmailAddressAttribute().IsValid(friendAddData.friend_email))
+            if (!new EmailAddressAttribute().IsValid(friendAddData.friend_email)) 
                 throw new ArgumentNullException();
                         
             var findFrendEntity = this.userRepository.FindByEmail(friendAddData.friend_email);

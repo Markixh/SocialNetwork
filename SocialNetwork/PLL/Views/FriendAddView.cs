@@ -5,10 +5,17 @@ using SocialNetwork.PLL.Helpers;
 
 namespace SocialNetwork.PLL.Views
 {
+    /// <summary>
+    /// Пользовательский интерфейс по добавлению пользователя в друзья
+    /// </summary>
     public class FriendAddView
     {
         FriendService friendService = new FriendService();
 
+        /// <summary>
+        /// Отображение интерфейса 
+        /// </summary>
+        /// <param name="user">текущий пользователь</param>
         public void Show(User user)
         {            
             FriendData friendAddData = new FriendData();
