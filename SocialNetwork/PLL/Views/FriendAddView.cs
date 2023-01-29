@@ -11,7 +11,7 @@ namespace SocialNetwork.PLL.Views
 
         public void Show(User user)
         {            
-            FriendAddData friendAddData = new FriendAddData();
+            FriendData friendAddData = new FriendData();
 
             Console.Write("\nВведите электронную почту пользователя для добавления в друзья:");
             friendAddData.friend_email = Console.ReadLine();

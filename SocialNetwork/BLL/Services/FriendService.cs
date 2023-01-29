@@ -17,7 +17,7 @@ namespace SocialNetwork.BLL.Services
             friendRepository = new FriendRepository();
         }
 
-        public void AddFrend(FriendAddData friendAddData)
+        public void AddFrend(FriendData friendAddData)
         {
             if (!new EmailAddressAttribute().IsValid(friendAddData.friend_email))
                 throw new ArgumentNullException();
